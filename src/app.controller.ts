@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-@Controller()
+@Controller('test')
 export class AppController {
   @Get()
   getHello(): any {
@@ -8,5 +8,9 @@ export class AppController {
       message: 'Hello',
       to: 'GL3',
     };
+  }
+  @Get('test')
+  testGet(): string {
+    return 'TEST OK';
   }
 }
