@@ -1,11 +1,11 @@
-import { TodoStatusEnum } from "../enums/todo-status.enum";
+import { TodoStatusEnum } from '../enums/todo-status.enum';
 
 export class Todo {
   constructor(
-    public id = 0,
+    public string = '',
     public name: string = '',
     public description: string = '',
     public createdAt = new Date(),
-    public status: TodoStatusEnum = TodoStatusEnum.waiting
+    public status: TodoStatusEnum = TodoStatusEnum.waiting,
   ) {}
 }

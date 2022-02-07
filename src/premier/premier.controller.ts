@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Patch, Post, Put } from "@nestjs/common";
 
 @Controller('premier')
 export class PremierController {
@@ -8,9 +8,9 @@ export class PremierController {
     return 'GET 🐢';
   }
   @Post()
-  postPremier() {
+  postPremier(@Body() data) {
     console.log('POST 🐇');
-    return 'POST 🐇';
+    return data;
   }
   @Delete()
   deletePremier() {
