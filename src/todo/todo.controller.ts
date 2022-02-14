@@ -19,22 +19,17 @@ export class ToDoController {
       return this.todoService.getToDos();
     }
     @Get('/:id')
-    getToDoId(@Param('id') id ):any {
+    getToDoId(@Param('id') id : number ):Todo {
       return this.todoService.getToDoId(id);
 
     } 
     @Delete('/:id')
-    DeleteToDoId(@Param('id') id ):any {
+    DeleteToDoId(@Param('id') id : number ):string  {
       return this.todoService.DeleteToDoId(id);
 
     } 
     @Patch("/:id?")
-    UpdateToDoId(@Body() updateToDodto: UpdateTodoDto ):any {
-      //TODO remove this
-      console.log(updateToDodto)
-
-      if (updateToDodto.id == undefined) return new HttpException("aucun id n'a ete fourni", 404);
-
-      return this.todoService.UpdateToDoId(updateToDodto);
+    UpdateToDoId(@Param('id') id: number ,@Body() updateToDodto: UpdateTodoDto ):Todo  {
+      return this.todoService.UpdateToDoId(id, updateToDodto);
   } 
 }
