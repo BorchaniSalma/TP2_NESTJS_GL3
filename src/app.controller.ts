@@ -1,6 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+// noinspection TypeScriptValidateTypes
 
-@Controller('test')
+import { Body, Controller, Get, Post } from '@nestjs/common';
+
+@Controller()
 export class AppController {
   @Get()
   getHello(): any {

@@ -3,12 +3,27 @@
 /* eslint-disable prefer-const */
 /* eslint-disable prettier/prettier */
 
-import { Controller, Get, Param,Delete, Patch,Query,Body, HttpStatus, NotFoundException, HttpException } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Delete,
+  Patch,
+  Query,
+  Body,
+  HttpStatus,
+  NotFoundException,
+  HttpException,
+  Post, UseInterceptors,
+} from '@nestjs/common';
 import { retry } from 'rxjs';
 import { UpdateTodoDto } from 'src/todo/dto/update-todo.dto';
 import { Todo } from 'src/todo/Model/todo.model';
 import {todoService} from 'src/todo/services/todo.services'
+import { StringifierPipe } from '../skills/StringifierPipe';
+import { DelayInterceptor } from '../interceptors/delay.interceptor';
 
+@UseInterceptors(DelayInterceptor)
 @Controller('to-do')
 export class ToDoController {
     private todoService = new todoService()
@@ -31,5 +46,6 @@ export class ToDoController {
     @Patch("/:id?")
     UpdateToDoId(@Param('id') id: number ,@Body() updateToDodto: UpdateTodoDto ):Todo  {
       return this.todoService.UpdateToDoId(id, updateToDodto);
-  } 
+  }
+
 }
